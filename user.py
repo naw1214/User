@@ -1,5 +1,5 @@
 class User:		# here's what we have so far
-    def __init__(self, name, email):
+    def __init__(self, name, email): # makes the instance of the class
         self.name = name
         self.email = email
         self.account_balance = 0
@@ -9,8 +9,17 @@ class User:		# here's what we have so far
 
     def make_withdrawl(self, amount):
         self.account_balance -= amount
+    
     def display_user_balance(self):
         print(self.account_balance)
+
+    def transfer(self,amount,user):
+        self.account_balance -= amount
+        user.account_balance += amount
+        self.display_user_balance()
+        user.display_user_balance()
+
+
     
 guido = User('Guido', 'guido@gmail.com')
 monty = User('Monty', 'monty@gmail.com')
@@ -33,3 +42,5 @@ micheal.make_withdrawl(120)
 micheal.make_withdrawl(120)
 micheal.make_withdrawl(120)
 print(micheal.account_balance)
+
+guido.transfer(150, micheal)
